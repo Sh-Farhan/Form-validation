@@ -12,9 +12,9 @@ for(let errorMessage of errorMessages){
     errorMessage.classList.add("d-none")
 }
 
-for(let element of emptyFieldMessages){
-    element.classList.add("d-none");
-}
+// for(let emptyFieldMessage of emptyFieldMessages){
+//     emptyFieldMessage.classList.add("d-none");
+// }
 
 
 let firstName,lastName,email,password;  
@@ -46,30 +46,38 @@ submitButton.addEventListener("click",(event)=>{
     event.preventDefault();
     console.log(firstName,lastName,email,password);
     if(firstName){
-        if(!nameRegex.test(firstName)) console.log("Name must contain only alphabets");
-        else console.log("good to go");
+        emptyFieldMessages[0].classList.add("d-none");
+        if(!nameRegex.test(firstName)) errorMessages[0].classList.remove("d-none");
+        else errorMessages[0].classList.add("d-none");
     }else{
-        console.log("please fill this field");
+        emptyFieldMessages[0].classList.remove("d-none");
+        console.log("please input the field")
     }
     // lastname
     if(lastName){
-        if(!nameRegex.test(lastName)) console.log("Name must contain only alphabets");
-        else console.log("good to go");
+        emptyFieldMessages[1].classList.add("d-none");
+        if(!nameRegex.test(lastName)) errorMessages[1].classList.remove("d-none");
+        else errorMessages[1].classList.add("d-none");
     }else{
-        console.log("please fill this field");
+        emptyFieldMessages[1].classList.remove("d-none");
+        console.log("please input the field")
     }
     // email
     if(email){
-        if(!emailRegex.test(email)) console.log("Invalid email ID")
-        else console.log("good to go")
-    }else{
-        console.log("please fill this field")
-    }
+        emptyFieldMessages[2].classList.add("d-none");
+        if(!emailRegex.test(email)) errorMessages[2].classList.remove("d-none");
+        else errorMessages[2].classList.add("d-none");
+    }else{  
+        emptyFieldMessages[2].classList.remove("d-none");
+        console.log("please input the field")
+      }
     // password
     if(password){
-        if(!passwordRegex.test(password)) console.log("Password not valid")
-        else console.log("good to go")
-    }else{
-        console.log("please fill this field")
-    }
+        emptyFieldMessages[3].classList.add("d-none");
+        if(!passwordRegex.test(password))errorMessages[3].classList.remove("d-none");
+        else  errorMessages[3].classList.add("d-none");
+    }else{   
+        emptyFieldMessages[0].classList.remove("d-none");
+        console.log("please input the field")
+     }
 })
